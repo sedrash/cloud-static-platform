@@ -1,0 +1,12 @@
+{
+  "faq": [
+    {
+      "question": "What is this platform?",
+      "answer": "It is a cloud-native platform used to publish static content through a Flask API."
+    },
+    {
+      "question": "Which technologies are used?",
+      "answer": "Flask, Docker, GitHub Actions, AKS and Azure Blob Storage."
+    }
+  ]
+}

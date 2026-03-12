@@ -1,0 +1,18 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Cloud Workshop 2026",
+      "date": "2026-02-10",
+      "location": "Brussels",
+      "description": "A workshop about Azure, containers and Kubernetes."
+    },
+    {
+      "id": 2,
+      "title": "DevOps Meetup",
+      "date": "2026-03-15",
+      "location": "Liège",
+      "description": "A meetup focused on CI/CD and observability."
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Static Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="hero">
+        <nav class="navbar">
+            <div class="brand">Cloud Static Platform</div>
+            <div class="nav-links">
+                <a href="/api/events">Events API</a>
+                <a href="/api/news">News API</a>
+                <a href="/api/faq">FAQ API</a>
+            </div>
+        </nav>
+
+        <div class="hero-content">
+            <p class="tag">Cloud-native • Flask • AKS • DevOps</p>
+            <h1>Static Content Delivery Platform</h1>
+            <p class="subtitle">
+                A cloud-native platform designed to expose static content through a REST API,
+                with Docker packaging, CI/CD automation and Kubernetes deployment.
+            </p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="/api/events">Explore the API</a>
+                <a class="btn btn-secondary" href="/healthz">Health Check</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="cards">
+            <article class="card">
+                <h2>Events</h2>
+                <p>Expose structured event data in JSON format for web clients and partners.</p>
+                <a href="/api/events">Open endpoint</a>
+            </article>
+
+            <article class="card">
+                <h2>News</h2>
+                <p>Publish announcements and operational updates stored in YAML format.</p>
+                <a href="/api/news">Open endpoint</a>
+            </article>
+
+            <article class="card">
+                <h2>FAQ</h2>
+                <p>Provide reusable answers and service information to client applications.</p>
+                <a href="/api/faq">Open endpoint</a>
+            </article>
+        </section>
+
+        <section class="status-section">
+            <h2>Service Status</h2>
+            <div class="status-grid">
+                <div class="status-box">
+                    <span class="status-label">Liveness</span>
+                    <a href="/healthz">/healthz</a>
+                </div>
+                <div class="status-box">
+                    <span class="status-label">Readiness</span>
+                    <a href="/readyz">/readyz</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>IR4 Project 2026 • Cloud & DevOps • Azure AKS</p>
+    </footer>
+</body>
+</html>
