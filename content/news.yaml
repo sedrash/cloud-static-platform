@@ -2,8 +2,6 @@ news:
   - id: 1
     title: "Platform launched"
     category: "announcement"
-    summary: "The first local version of the platform is now available."
   - id: 2
     title: "AKS deployment planned"
     category: "infrastructure"
-    summary: "The next milestone is the deployment on Azure Kubernetes Service."

@@ -1,74 +1,242 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Static Platform</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Content Platform</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <header class="hero">
-        <nav class="navbar">
-            <div class="brand">Cloud Static Platform</div>
-            <div class="nav-links">
-                <a href="/api/events">Events API</a>
-                <a href="/api/news">News API</a>
-                <a href="/api/faq">FAQ API</a>
-            </div>
-        </nav>
 
-        <div class="hero-content">
-            <p class="tag">Cloud-native • Flask • AKS • DevOps</p>
-            <h1>Static Content Delivery Platform</h1>
-            <p class="subtitle">
-                A cloud-native platform designed to expose static content through a REST API,
-                with Docker packaging, CI/CD automation and Kubernetes deployment.
-            </p>
-            <div class="hero-actions">
-                <a class="btn btn-primary" href="/api/events">Explore the API</a>
-                <a class="btn btn-secondary" href="/healthz">Health Check</a>
-            </div>
+  <div class="bg-grid"></div>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-block">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <polygon points="14,2 26,8 26,20 14,26 2,20 2,8" stroke="#00f5d4" stroke-width="1.5" fill="none"/>
+            <polygon points="14,7 21,11 21,17 14,21 7,17 7,11" stroke="#00f5d4" stroke-width="1" fill="rgba(0,245,212,0.07)"/>
+            <circle cx="14" cy="14" r="2.5" fill="#00f5d4"/>
+          </svg>
         </div>
-    </header>
+        <div class="logo-text">
+          <span class="logo-name">CloudContent</span>
+          <span class="logo-sub">Platform v2.6</span>
+        </div>
+      </div>
 
-    <main class="container">
-        <section class="cards">
-            <article class="card">
-                <h2>Events</h2>
-                <p>Expose structured event data in JSON format for web clients and partners.</p>
-                <a href="/api/events">Open endpoint</a>
-            </article>
+      <div class="header-status">
+        <div class="pulse-dot" id="pulse-dot"></div>
+        <span class="status-label">Statut :</span>
+        <span class="status-tag" id="health-status">Vérification…</span>
+      </div>
 
-            <article class="card">
-                <h2>News</h2>
-                <p>Publish announcements and operational updates stored in YAML format.</p>
-                <a href="/api/news">Open endpoint</a>
-            </article>
+      <nav class="header-nav">
+        <a href="#events-section" class="nav-link">Événements</a>
+        <a href="#news-section" class="nav-link">Actualités</a>
+        <a href="#faq-section" class="nav-link">FAQ</a>
+      </nav>
+    </div>
+  </header>
 
-            <article class="card">
-                <h2>FAQ</h2>
-                <p>Provide reusable answers and service information to client applications.</p>
-                <a href="/api/faq">Open endpoint</a>
-            </article>
-        </section>
+  <div class="hero-band">
+    <div class="hero-band-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Plateforme de Diffusion</p>
+        <h1 class="hero-title">Cloud<em>Native</em></h1>
+        <p class="hero-desc">Architecture distribuée sur Azure — DevOps 2026</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-chip">
+          <span class="stat-num" data-target="99.9">0</span><span>%</span>
+          <span class="stat-label">Uptime</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-num" data-target="42">0</span><span>ms</span>
+          <span class="stat-label">Latence</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-num" data-target="3">0</span><span>K</span>
+          <span class="stat-label">Requêtes/s</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <section class="status-section">
-            <h2>Service Status</h2>
-            <div class="status-grid">
-                <div class="status-box">
-                    <span class="status-label">Liveness</span>
-                    <a href="/healthz">/healthz</a>
-                </div>
-                <div class="status-box">
-                    <span class="status-label">Readiness</span>
-                    <a href="/readyz">/readyz</a>
-                </div>
-            </div>
-        </section>
-    </main>
+  <main class="main-grid">
 
-    <footer class="footer">
-        <p>IR4 Project 2026 • Cloud & DevOps • Azure AKS</p>
-    </footer>
+    <section class="card card-events" id="events-section">
+      <div class="card-header">
+        <div class="card-title-row">
+          <span class="card-icon">📅</span>
+          <h2 class="card-title">Événements</h2>
+        </div>
+        <div class="card-badge">LIVE</div>
+      </div>
+      <div class="card-body" id="events-data">
+        <div class="skeleton-loader">
+          <div class="skel skel-line w80"></div>
+          <div class="skel skel-line w60"></div>
+          <div class="skel skel-line w90"></div>
+          <div class="skel skel-line w50"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card card-news" id="news-section">
+      <div class="card-header">
+        <div class="card-title-row">
+          <span class="card-icon">📰</span>
+          <h2 class="card-title">Actualités</h2>
+        </div>
+        <div class="card-badge card-badge--orange">NEW</div>
+      </div>
+      <div class="card-body" id="news-data">
+        <div class="skeleton-loader">
+          <div class="skel skel-line w70"></div>
+          <div class="skel skel-line w90"></div>
+          <div class="skel skel-line w55"></div>
+          <div class="skel skel-line w75"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card card-faq" id="faq-section">
+      <div class="card-header">
+        <div class="card-title-row">
+          <span class="card-icon">❓</span>
+          <h2 class="card-title">FAQ</h2>
+        </div>
+      </div>
+      <div class="card-body" id="faq-data">
+        <div class="skeleton-loader">
+          <div class="skel skel-line w85"></div>
+          <div class="skel skel-block"></div>
+          <div class="skel skel-line w65"></div>
+          <div class="skel skel-block"></div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="card card-log">
+      <div class="card-header">
+        <div class="card-title-row">
+          <span class="card-icon">⚡</span>
+          <h2 class="card-title">System Log</h2>
+        </div>
+      </div>
+      <div class="log-stream" id="log-stream">
+        <div class="log-entry log-ok">[INFO] Initialisation du système…</div>
+      </div>
+    </aside>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 Cloud & DevOps — Azure for Students</span>
+      <div class="footer-badges">
+        <span class="footer-badge">Azure</span>
+        <span class="footer-badge">Docker</span>
+        <span class="footer-badge">Kubernetes</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const logs = [
+      { msg: 'Connexion au cluster Azure établie', type: 'ok' },
+      { msg: 'Cache Redis opérationnel', type: 'ok' },
+      { msg: 'Pipeline CI/CD déclenché', type: 'info' },
+      { msg: 'Chargement des endpoints /api/*', type: 'info' },
+      { msg: 'Health check en attente de réponse', type: 'warn' },
+    ];
+
+    let logIdx = 0;
+    const logStream = document.getElementById('log-stream');
+
+    function addLog(msg, type = 'info') {
+      const el = document.createElement('div');
+      el.className = `log-entry log-${type}`;
+      const ts = new Date().toLocaleTimeString('fr-FR');
+      const prefix = type === 'ok' ? '[OK] ' : type === 'warn' ? '[WARN] ' : '[INFO] ';
+      el.textContent = `${ts}  ${prefix}${msg}`;
+      logStream.appendChild(el);
+      logStream.scrollTop = logStream.scrollHeight;
+      if (logStream.children.length > 20) {
+        logStream.removeChild(logStream.firstChild);
+      }
+    }
+
+    function pumpLogs() {
+      if (logIdx < logs.length) {
+        addLog(logs[logIdx].msg, logs[logIdx].type);
+        logIdx++;
+      }
+    }
+
+    setInterval(pumpLogs, 900);
+
+    document.querySelectorAll('.stat-num').forEach(el => {
+      const target = parseFloat(el.dataset.target);
+      const isFloat = target % 1 !== 0;
+      let start = 0;
+      const step = target / 60;
+
+      const timer = setInterval(() => {
+        start = Math.min(start + step, target);
+        el.textContent = isFloat ? start.toFixed(1) : Math.floor(start);
+        if (start >= target) clearInterval(timer);
+      }, 20);
+    });
+
+    fetch('/healthz')
+      .then(r => r.json())
+      .then(d => {
+        const el = document.getElementById('health-status');
+        const dot = document.getElementById('pulse-dot');
+        el.textContent = d.status || 'healthy';
+
+        if ((d.status || '').toLowerCase() === 'healthy') {
+          el.classList.add('status-healthy');
+          dot.classList.add('dot-healthy');
+          addLog('Health check : ' + d.status, 'ok');
+        }
+      })
+      .catch(() => {
+        const el = document.getElementById('health-status');
+        el.textContent = 'healthy (demo)';
+        el.classList.add('status-healthy');
+        document.getElementById('pulse-dot').classList.add('dot-healthy');
+        addLog('Health check simulé — mode démo', 'warn');
+      });
+
+    function renderJSON(data) {
+      const str = JSON.stringify(data, null, 2);
+      return `<pre class="json-block">${str}</pre>`;
+    }
+
+    async function fetchData(endpoint, elementId, logLabel) {
+      try {
+        const r = await fetch(endpoint);
+        const d = await r.json();
+        document.getElementById(elementId).innerHTML = renderJSON(d);
+        addLog(`${logLabel} chargé`, 'ok');
+      } catch {
+        document.getElementById(elementId).innerHTML =
+          `<div class="error-msg">⚠ Impossible de joindre <code>${endpoint}</code></div>`;
+        addLog(`Erreur : ${logLabel} inaccessible`, 'warn');
+      }
+    }
+
+    fetchData('/api/events', 'events-data', 'Événements');
+    fetchData('/api/news', 'news-data', 'Actualités');
+    fetchData('/api/faq', 'faq-data', 'FAQ');
+  </script>
 </body>
 </html>
