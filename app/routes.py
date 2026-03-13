@@ -21,8 +21,12 @@ def readyz():
 
 @main_blueprint.route("/api/events")
 def events():
-    return jsonify(content_service.get_content("events")), 200
-
+    data = content_service.get_content("events")
+    # On s'assure que le JSON contient la clé 'items' pour le test
+    return jsonify({
+        "category": "events",
+        "items": data.get("events", []) # On extrait la liste depuis 'events'
+    }), 200
 
 @main_blueprint.route("/api/news")
 def news():
