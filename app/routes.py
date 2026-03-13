@@ -18,13 +18,19 @@ def readyz():
 @main_blueprint.route("/api/events")
 def events():
     data = content_service.get_content("events")
-    # Sécurité : on s'assure d'extraire une liste pour la clé 'items'
-    if isinstance(data, dict):
-        items = data.get("events", [])
-    else:
-        items = data
-        
+    # Sécurité : on s'assure d'extraire une liste
+    items = data.get("events", []) if isinstance(data, dict) else data
     return jsonify({
         "category": "events",
         "items": items
     }), 200
+
+@main_blueprint.route("/api/news")
+def news():
+    data = content_service.get_content("news")
+    return jsonify(data), 200
+
+@main_blueprint.route("/api/faq")
+def faq():
+    data = content_service.get_content("faq")
+    return jsonify(data), 200
