@@ -17,8 +17,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-          pip install pytest PyYAML flask
+          python -m pip install --upgrade pip
+          pip install flask PyYAML pytest gunicorn
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Run Tests
         run: python -m pytest
