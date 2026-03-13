@@ -8,13 +8,22 @@ def client():
     with app.test_client() as client:
         yield client
 
+def test_home(client):
+    response = client.get('/')
+    assert response.status_code == 200
+
 def test_health(client):
-    assert client.get('/healthz').status_code == 200
+    response = client.get('/healthz')
+    assert response.status_code == 200
+    assert response.get_json() == {"status": "healthy"}
 
 def test_ready(client):
-    assert client.get('/readyz').status_code == 200
+    response = client.get('/readyz')
+    assert response.status_code == 200
+    assert response.get_json() == {"status": "ready"}
 
 def test_api_events(client):
-    # On teste uniquement celle-ci qui semble bien fonctionner chez toi
     response = client.get('/api/events')
     assert response.status_code == 200
+    data = response.get_json()
+    assert "items" in data
